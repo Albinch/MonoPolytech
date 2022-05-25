@@ -1,8 +1,8 @@
-#Pseudo-code
+# Pseudo-code
 
-Pour ce pseudo-code, nous admettons que tous les objets sont créés et que le plateau est instancié.
+# Pour ce pseudo-code, nous admettons que tous les objets sont créés et que le plateau est instancié.
 
-Nous allons nous intéresser à la boucle de jeu.
+# Nous allons nous intéresser à la boucle de jeu.
 
 Données:
     - nbJoueurs : int - nombre de joueurs
@@ -19,3 +19,15 @@ Tant que partie.jeuFini = false Faire :
         joueurs[i].getCurrentCase().actionCase(joueurs[i]);
 
         partie.checkFin();
+
+
+// Scénarios de test
+- Tester le comportement d'un joueur agressif quand il tombe sur une case Investissement
+- Tester le comportement d'un joueur agressif quand il tombe sur une case Antitrust
+- Tester le comportement d'un joueur prudent quand il tombe sur une case Investissement
+- Tester le comportement d'un joueur prudent quand il tombe sur une case Antitrust
+- Tester la fonction acheter de la classe Joueur (vérifier la diminution du liquide)
+- Tester la fonction vendre de la classe Joueur (vérifier l'augmentation du liquide)
+- Tester la fonction payer de la classe Joueur (vérifier la diminution du liquide pour le joueur qui paye et l'augmentation pour celui qui reçoit)
+- Tester la fonction recevoirSubvention de la classe Joueur (vérifier l'augmentation de la liquidité chez le joueur et la diminution chez l'Etat)
+- Tester la fonction payerBFP de la classe Joueur (vérifier la diminution de la liquidité chez le joueur et l'augmentation chez l'Etat)

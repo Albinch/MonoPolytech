@@ -1,8 +1,11 @@
+package Acteurs;
+
 public class Acteur{
+
     private float liquide;
     private String nom;
+
     public Acteur(float liquide, String nom){
-        
         this.liquide = liquide;
         this.nom = nom;
     }
