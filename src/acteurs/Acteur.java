@@ -1,6 +1,6 @@
-package Acteurs;
+package acteurs;
 
-import Investissement.*;
+import investissement.*;
 import java.util.ArrayList;
 
 public class Acteur{

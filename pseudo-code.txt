@@ -22,9 +22,9 @@ Tant que partie.jeuFini = false Faire :
 
 
 // Scénarios de test
-- Tester le comportement d'un joueur agressif quand il tombe sur une case Investissement
+- Tester le comportement d'un joueur agressif quand il tombe sur une case investissement
 - Tester le comportement d'un joueur agressif quand il tombe sur une case Antitrust
-- Tester le comportement d'un joueur prudent quand il tombe sur une case Investissement
+- Tester le comportement d'un joueur prudent quand il tombe sur une case investissement
 - Tester le comportement d'un joueur prudent quand il tombe sur une case Antitrust
 - Tester la fonction acheter de la classe Joueur (vérifier la diminution du liquide)
 - Tester la fonction vendre de la classe Joueur (vérifier l'augmentation du liquide)

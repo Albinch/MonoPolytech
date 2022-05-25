@@ -1,4 +1,6 @@
-package Plateau;
+package plateau;
+
+import acteurs.*;
 
 public class Antitrust extends Case{
 
