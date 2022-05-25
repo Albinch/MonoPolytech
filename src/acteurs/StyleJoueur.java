@@ -1,4 +1,4 @@
-package Acteurs;
+package acteurs;
 
 public interface StyleJoueur {
     public void actionInvestissement();

@@ -1,4 +1,4 @@
-package Investissement;
+package investissement;
 
 public class Investissement{
 

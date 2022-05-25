@@ -1,4 +1,4 @@
-package Plateau;
+package plateau;
 
 public class Repos extends Case{
 
