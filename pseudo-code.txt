@@ -1,1 +1,21 @@
-#Pseudo de code
+#Pseudo-code
+
+Pour ce pseudo-code, nous admettons que tous les objets sont créés et que le plateau est instancié.
+
+Nous allons nous intéresser à la boucle de jeu.
+
+Données:
+    - nbJoueurs : int - nombre de joueurs
+    - joueurs : tableau de nbJoueurs joueurs
+    - partie : Partie //Instance de la partie actuelle
+
+Tant que partie.jeuFini = false Faire :
+
+    Pour i allant de 0 à nbJoueurs-1 Faire :
+        //Début du tour pour le joueur i
+
+        joueurs[i].jouer();
+        Afficher "Le joueur i est tombé sur une case joueurs[i].getCurrentCase().toString()"
+        joueurs[i].getCurrentCase().actionCase(joueurs[i]);
+
+        partie.checkFin();
