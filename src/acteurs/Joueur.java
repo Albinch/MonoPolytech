@@ -1,9 +1,10 @@
 package acteurs;
 
-import com.sun.tools.javac.Main;
 import investissement.Investissement;
+import jdk.jshell.spi.ExecutionControl;
 import plateau.*;
 import exceptions.*;
+import static plateau.Plateau.ETAT;
 
 public abstract class Joueur extends Acteur implements StyleJoueur{
 
@@ -23,6 +24,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
             throw new PasAssezDeLiquideException();
         super.getInvestissements().add(investissement);
         super.setLiquide(super.getLiquide() - investissement.getValeur());
+        ETAT.getInvestissements().remove(investissement);
     }
 
     public void vendre(Investissement investissement){

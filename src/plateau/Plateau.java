@@ -2,12 +2,14 @@ package plateau;
 
 import investissement.Investissement;
 import plateau.cases.*;
+import acteurs.Etat;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Plateau {
 
+    public static Etat ETAT;
     private ArrayList<Case> cases;
     private int nbCases = 40;
     private int nbCasesAntitrust = 6;
@@ -23,6 +25,7 @@ public class Plateau {
     public void generatePlateau(){
 
         int i = 0;
+        this.ETAT = new Etat(100000, "Etat");
 
         while(this.cases.size() < this.nbCases){
             int random = new Random().nextInt(5);
