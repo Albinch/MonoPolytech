@@ -4,7 +4,10 @@ import investissement.Investissement;
 import jdk.jshell.spi.ExecutionControl;
 import plateau.*;
 import exceptions.*;
-import static plateau.Plateau.ETAT;
+
+import java.util.Random;
+
+import static plateau.Plateau.*;
 
 public abstract class Joueur extends Acteur implements StyleJoueur{
 
@@ -13,6 +16,10 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     public Joueur(float liquide, String nom, Case currentCase){
         super(liquide, nom);
         this.currentCase = currentCase;
+    }
+
+    public void setCurrentCase(Case c){
+        this.currentCase = c;
     }
 
     public abstract void actionInvestissement();
@@ -44,7 +51,8 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     }
 
     public void jouer(){
-
+        int valeurDe = new Random().nextInt(1, 6);
+        this.setCurrentCase((CASES.get(this.currentCase.getIndex() + valeurDe % NBCASES)));
     }
 
     public void payer(Acteur acteur, Investissement investissement) throws PasAssezDeLiquideException{

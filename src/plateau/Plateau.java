@@ -13,17 +13,17 @@ public class Plateau {
     private InvestissementsManager im;
 
     public static Etat ETAT;
-    private ArrayList<Case> cases;
-    private int nbCases = 40;
+    public static ArrayList<Case> CASES;
+    public static int NBCASES = 40;
     private int nbCasesAntitrust = 0;
     private int nbCasesBFP = 0;
     private int nbCasesRepos = 0;
     private int nbCasesSubvention = 0;
     private int nbCasesInvestissement = 0;
 
-    public Plateau(int nbCases, InvestissementsManager im){
-        this.nbCases = nbCases;
-        this.cases = new ArrayList<Case>();
+    public Plateau(int NBCASES, InvestissementsManager im){
+        this.NBCASES = NBCASES;
+        this.CASES = new ArrayList<Case>();
         this.im = im;
     }
 
@@ -31,28 +31,28 @@ public class Plateau {
 
         this.ETAT = new Etat(100000, "Etat");
 
-        for(int i = 0; i < this.nbCases; i++){
+        for(int i = 0; i < this.NBCASES; i++){
             int random = new Random().nextInt(5);
             switch(random){
 
                 case 0:
-                    this.cases.add(new Antitrust(i));
+                    this.CASES.add(new Antitrust(i));
                     this.nbCasesAntitrust++;
                     break;
                 case 1:
-                    this.cases.add(new BureauFinancesPubliques(i));
+                    this.CASES.add(new BureauFinancesPubliques(i));
                     this.nbCasesBFP++;
                     break;
                 case 2:
-                    this.cases.add(new CaseInvestissement(i, im.getUnusedInvestissement()));
+                    this.CASES.add(new CaseInvestissement(i, im.getUnusedInvestissement()));
                     this.nbCasesInvestissement++;
                     break;
                 case 3:
-                    this.cases.add(new Repos(i));
+                    this.CASES.add(new Repos(i));
                     this.nbCasesRepos++;
                     break;
                 case 4:
-                    this.cases.add(new Subvention(i));
+                    this.CASES.add(new Subvention(i));
                     this.nbCasesSubvention++;
                     break;
 
@@ -61,8 +61,8 @@ public class Plateau {
     }
 
     public String toString(){
-        return "Plateau de " + this.nbCases + " cases, comportant : " + this.nbCasesSubvention + " cases 'Subvention', " + this.nbCasesRepos + " cases 'Repos', " +
-                this.nbCasesBFP + " cases 'BFP', " + this.nbCasesAntitrust + " cases 'Antitrust', " + this.nbCasesInvestissement + " cases 'Investissement'";
+        return "Plateau de " + this.NBCASES + " CASES, comportant : " + this.nbCasesSubvention + " CASES 'Subvention', " + this.nbCasesRepos + " CASES 'Repos', " +
+                this.nbCasesBFP + " CASES 'BFP', " + this.nbCasesAntitrust + " CASES 'Antitrust', " + this.nbCasesInvestissement + " CASES 'Investissement'";
     }
 
 }
