@@ -27,17 +27,20 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         ETAT.getInvestissements().remove(investissement);
     }
 
-    public void vendre(Investissement investissement){
+    public void vendre(Investissement investissement) throws InvestissementNonPossedeException{
+        if(!super.getInvestissements().contains(investissement))
+            throw new InvestissementNonPossedeException();
         super.getInvestissements().remove(investissement);
         super.setLiquide(super.getLiquide() + investissement.getValeur());
+        ETAT.getInvestissements().add(investissement);
     }
 
     public void payerBFP(){
 
     }
 
-    public void recevoirSubvention(){
-
+    public void recevoirSubvention(float subvention){
+        super.setLiquide(super.getLiquide() + subvention);
     }
 
     public void jouer(){
