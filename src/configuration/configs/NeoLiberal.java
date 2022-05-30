@@ -4,10 +4,11 @@ import configuration.Configuration;
 
 public class NeoLiberal extends Configuration {
 
-    public NeoLiberal(float pourcentageTaxes, float limiteAntiTrust, float subventions){
-        setPourcentageTaxes(pourcentageTaxes);
-        setLimiteAntiTrust(limiteAntiTrust);
-        setSubventions(subventions);
+    public NeoLiberal(boolean foncier){
+        setPourcentageTaxes(10);
+        setLimiteAntiTrust(3000);
+        setSubventions(1200);
+        setFoncier(foncier);
     }
 
 }

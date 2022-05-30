@@ -5,6 +5,15 @@ public abstract class Configuration {
     float pourcentageTaxes;
     float limiteAntiTrust;
     float subventions;
+    boolean foncier;
+
+    public boolean isFoncier() {
+        return foncier;
+    }
+
+    public void setFoncier(boolean foncier) {
+        this.foncier = foncier;
+    }
 
     public float getPourcentageTaxes() {
         return pourcentageTaxes;
