@@ -12,12 +12,9 @@ public class BureauFinancesPubliques extends Case {
     @Override
     public void actionCase(Joueur j){
     
-    //
-    
     }
 
     public String toString() {
-        return "La case '" + this.getIndex() + "est une case 'BFP'";
+        return "La case '"+ this.getIndex() + "est une case 'Bureau finances publiques'";
     }
-
 }
