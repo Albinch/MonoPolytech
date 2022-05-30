@@ -18,6 +18,14 @@ public class Acteur{
     public float getLiquide(){
         return this.liquide;
     }
+
+    public ArrayList<Investissement> getInvestissements(){
+        return this.investissements;
+    }
+
+    public void setLiquide(float liquide){
+        this.liquide = liquide;
+    }
     
     public String toString(){
         return "Joueur : " + this.nom + " possède " + this.liquide + "\n";

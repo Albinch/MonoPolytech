@@ -1,6 +1,9 @@
 package acteurs;
 
+import com.sun.tools.javac.Main;
+import investissement.Investissement;
 import plateau.*;
+import exceptions.*;
 
 public abstract class Joueur extends Acteur implements StyleJoueur{
 
@@ -15,12 +18,16 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
 
     public abstract void actionAntitrust();
 
-    public void acheter(){
-
+    public void acheter(Investissement investissement) throws PasAssezDeLiquideException{
+        if(super.getLiquide() < investissement.getValeur())
+            throw new PasAssezDeLiquideException();
+        super.getInvestissements().add(investissement);
+        super.setLiquide(super.getLiquide() - investissement.getValeur());
     }
 
-    public void vendre(){
-
+    public void vendre(Investissement investissement){
+        super.getInvestissements().remove(investissement);
+        super.setLiquide(super.getLiquide() + investissement.getValeur());
     }
 
     public void payerBFP(){
@@ -31,8 +38,14 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
 
     }
 
+    public void jouer(){
+
+    }
+
+    public void payer(Acteur acteur, Investissement investissement) throws PasAssezDeLiquideException{
+    }
+
     public String toString(){
         return super.toString() + ". Ce joueur est tombé sur la case : " + this.currentCase + "\n";
     }
-
 }

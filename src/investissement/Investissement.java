@@ -15,10 +15,10 @@ public class Investissement{
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
-    public float getValeurInv(){
+    public float getValeur(){
         return this.valeur;
     }
 
