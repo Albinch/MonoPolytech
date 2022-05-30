@@ -52,7 +52,8 @@ public class Plateau {
                     this.nbCasesRepos++;
                     break;
                 case 4:
-                    this.cases.add(new Subvention(i));
+                    int amount = (int) 1000 - new Random().nextInt(500);
+                    this.cases.add(new Subvention(i, amount));
                     this.nbCasesSubvention++;
                     break;
 
