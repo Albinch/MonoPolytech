@@ -5,13 +5,16 @@ import plateau.Case;
 
 public class Subvention extends Case {
 
-    public Subvention(int index){
+    float amount;
+
+    public Subvention(int index, float amount){
         super(index);
+        this.amount = amount;
     }
 
     @Override
     public void actionCase(Joueur j){
-    
+        j.recevoirSubvention(this.amount);
     }
     
     public String toString() {

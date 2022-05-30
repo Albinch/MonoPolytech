@@ -4,10 +4,11 @@ import configuration.Configuration;
 
 public class Capitaliste extends Configuration {
 
-    public Capitaliste(float pourcentageTaxes, float limiteAntiTrust, float subventions){
-        setPourcentageTaxes(pourcentageTaxes);
-        setLimiteAntiTrust(limiteAntiTrust);
-        setSubventions(subventions);
+    public Capitaliste(boolean foncier){
+        setPourcentageTaxes(45);
+        setLimiteAntiTrust(3000);
+        setSubventions(2000);
+        setFoncier(foncier);
     }
 
 }

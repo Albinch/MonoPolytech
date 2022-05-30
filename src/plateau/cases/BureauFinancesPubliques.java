@@ -11,7 +11,9 @@ public class BureauFinancesPubliques extends Case {
 
     @Override
     public void actionCase(Joueur j){
-    
+
+
+
     }
 
     public String toString() {
