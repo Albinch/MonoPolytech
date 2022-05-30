@@ -42,7 +42,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         ETAT.getInvestissements().add(investissement);
     }
 
-    public void payerBFP(){
+    public void payerBFP(boolean foncier, float taxe){
 
     }
 
