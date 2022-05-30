@@ -20,6 +20,6 @@ public class Acteur{
     }
     
     public String toString(){
-        return "Joueur : " + this.nom +"possede "+this.liquide;
+        return "Joueur : " + this.nom + " possède " + this.liquide + "\n";
     }
 }
