@@ -9,15 +9,16 @@ public  class Main {
     public static void main(String[] args){
 
         createInstances();
+        im.createInvestissements();
+        plateau.generatePlateau();
 
-
-        System.out.println("Hello");
+        System.out.println(plateau.toString());
 
     }
 
     public static void createInstances(){
         im = new InvestissementsManager();
-        plateau = new Plateau(40);
+        plateau = new Plateau(40, im);
     }
 
 }
