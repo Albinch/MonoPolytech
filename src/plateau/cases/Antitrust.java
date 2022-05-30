@@ -1,8 +1,9 @@
-package plateau;
+package plateau.cases;
 
 import acteurs.*;
+import plateau.Case;
 
-public class Antitrust extends Case{
+public class Antitrust extends Case {
 
     public Antitrust(int index){
         super(index);

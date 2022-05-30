@@ -16,6 +16,9 @@ Tant que partie.jeuFini = false Faire :
 
         joueurs[i].jouer();
         Afficher "Le joueur i est tombé sur une case joueurs[i].getCurrentCase().toString()"
+
+        //Supposons que l
+
         joueurs[i].getCurrentCase().actionCase(joueurs[i]);
 
         partie.checkFin();

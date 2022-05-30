@@ -1,6 +1,8 @@
-package plateau;
+package plateau.cases;
 
-public class BureauFinancesPubliques extends Case{
+import plateau.Case;
+
+public class BureauFinancesPubliques extends Case {
 
     public BureauFinancesPubliques(int index){
         super(index);
