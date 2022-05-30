@@ -16,6 +16,6 @@ public class Antitrust extends Case {
     }
     
     public String toString() {
-        return "la case '"+this.index + "est un Antitrust";
+        return "la case '" + this.getIndex() + "est un Antitrust";
     }
 }

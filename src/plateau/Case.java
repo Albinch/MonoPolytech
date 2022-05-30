@@ -1,8 +1,10 @@
 package plateau;
 
+import acteurs.Joueur;
+
 public class Case{
 
-    private int index;
+    private final int index;
     
     public Case(int index){
     
@@ -14,7 +16,7 @@ public class Case{
         return this.index;
     }
     
-    public void actionCase(){
+    public void actionCase(Joueur joueur){
     
     //
     
