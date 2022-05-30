@@ -8,14 +8,13 @@ public class Antitrust extends Case {
     public Antitrust(int index){
         super(index);
     }
-    
+
+    @Override
     public void actionCase(Joueur j){
-    
-    //
     
     }
     
     public String toString() {
-        return "la case '" + this.getIndex() + "est un Antitrust";
+        return "La case '" + this.getIndex() + " est une case 'Antitrust'";
     }
 }

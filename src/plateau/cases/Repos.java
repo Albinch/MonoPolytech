@@ -8,10 +8,9 @@ public class Repos extends Case {
     public Repos(int index){
         super(index);
     }
-    
+
+    @Override
     public void actionCase(Joueur j){
-    
-    //
     
     }
     

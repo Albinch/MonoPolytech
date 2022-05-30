@@ -8,10 +8,9 @@ public class Subvention extends Case {
     public Subvention(int index){
         super(index);
     }
-    
+
+    @Override
     public void actionCase(Joueur j){
-    
-    //
     
     }
     
