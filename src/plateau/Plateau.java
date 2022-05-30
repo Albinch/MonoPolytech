@@ -1,5 +1,6 @@
 package plateau;
 
+import configuration.ConfigurationManager;
 import investissement.Investissement;
 import investissement.InvestissementsManager;
 import plateau.cases.*;
