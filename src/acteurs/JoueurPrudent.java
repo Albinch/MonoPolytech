@@ -1,21 +1,25 @@
 package acteurs;
 
+import exceptions.PasAssezDeLiquideException;
 import plateau.*;
 import configuration.*;
 import investissement.ComparateurInvestissement;
 import investissement.Investissement;
+
+import static main.Main.CONFIG;
 
 public class JoueurPrudent extends Joueur{
     public JoueurPrudent(float liquide, String nom, Case currentCase){
         super(liquide, nom, currentCase);
     }
 
-    public void actionInvestissement( Investissement investissement){
-    Configuration currentConfig = Main.CONFIG.getCurrentConfig();
-        if(this.getInvestissement().size()<currentConfig.getLimiteAntiTrust() || investissement.getValeur() < this.getLiquide()){
+
+    public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException {
+        Configuration currentConfig = CONFIG.getCurrentConfig();
+        if(this.getInvestissements().size()<currentConfig.getLimiteAntiTrust() || investissement.getValeur() < this.getLiquide()){
             this.acheter(investissement);
         }
-        else if(this.getInvestissement().size()==currentConfig.getLimiteAntiTrust()){
+        else if(this.getInvestissements().size()==currentConfig.getLimiteAntiTrust()){
             System.out.println("Le nombre maximum d'investissement est atteint pour ce joueur");
         }
         else if(investissement.getValeur() > this.getLiquide()){
@@ -26,7 +30,7 @@ public class JoueurPrudent extends Joueur{
     public void actionAntitrust(){
         
         this.getInvestissements().sort(new ComparateurInvestissement());
-        if(nbInvestissements < Main.CONFIG.getCurrentConfig().getLimiteAntiTrust()){
+        if(nbInvestissements < CONFIG.getCurrentConfig().getLimiteAntiTrust()){
             System.out.println("Ce joueur ne possède pas plus de biens que la limite. Il ne doit rien vendre.\n");
         }
         
