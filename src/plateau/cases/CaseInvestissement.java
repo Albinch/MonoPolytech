@@ -15,7 +15,8 @@ public class CaseInvestissement extends Case {
 
     @Override
     public void actionCase(Joueur j){
-    
+        Configuration currentConfig = Main.CONFIG.getCurrentConfig();
+        j.actionInvestissement();
     }
     
     public String toString() {

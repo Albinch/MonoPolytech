@@ -12,6 +12,8 @@ public class Antitrust extends Case {
     @Override
     public void actionCase(Joueur j){
     
+        Configuration currentConfig = Main.CONFIG.getCurrentConfig();
+        j.actionAntitrust();
     }
     
     public String toString() {
