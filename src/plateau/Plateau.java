@@ -63,8 +63,12 @@ public class Plateau {
     }
 
     public String toString(){
-        return "Plateau de " + this.NBCASES + " CASES, comportant : " + this.nbCasesSubvention + " CASES 'Subvention', " + this.nbCasesRepos + " CASES 'Repos', " +
-                this.nbCasesBFP + " CASES 'BFP', " + this.nbCasesAntitrust + " CASES 'Antitrust', " + this.nbCasesInvestissement + " CASES 'Investissement'";
+        return "Plateau de " + this.NBCASES + " cases, comportant : " + this.nbCasesSubvention + " cases 'Subvention', " + this.nbCasesRepos + " cases 'Repos', " +
+                this.nbCasesBFP + " cases 'BFP', " + this.nbCasesAntitrust + " cases 'Antitrust', " + this.nbCasesInvestissement + " cases 'Investissement'";
+    }
+
+    public int getNBCASES(){
+        return NBCASES;
     }
 
 }

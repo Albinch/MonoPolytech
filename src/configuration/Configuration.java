@@ -3,7 +3,7 @@ package configuration;
 public abstract class Configuration {
 
     float pourcentageTaxes;
-    float limiteAntiTrust;
+    int limiteAntiTrust;
     float subventions;
     boolean foncier;
 
@@ -23,11 +23,11 @@ public abstract class Configuration {
         this.pourcentageTaxes = pourcentageTaxes;
     }
 
-    public float getLimiteAntiTrust() {
+    public int getLimiteAntiTrust() {
         return limiteAntiTrust;
     }
 
-    public void setLimiteAntiTrust(float limiteAntiTrust) {
+    public void setLimiteAntiTrust(int limiteAntiTrust) {
         this.limiteAntiTrust = limiteAntiTrust;
     }
 
@@ -38,5 +38,7 @@ public abstract class Configuration {
     public void setSubventions(float subventions) {
         this.subventions = subventions;
     }
+
+    public abstract String toString();
 
 }

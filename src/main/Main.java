@@ -17,7 +17,7 @@ public class Main {
         IM.createInvestissements();
         PLATEAU.generatePlateau();
 
-        System.out.println(PLATEAU.toString());
+        System.out.println("Un plateau de " + PLATEAU.getNBCASES() + " case(s) a été généré.");
 
     }
 
