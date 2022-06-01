@@ -43,7 +43,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     }
 
     public void payerBFP(boolean foncier, float taxe){
-
+ 
     }
 
     public void recevoirSubvention(float subvention){
