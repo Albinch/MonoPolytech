@@ -12,7 +12,7 @@ public class JoueurPrudent extends Joueur{
 
     public void actionInvestissement( Investissement investissement){
     Configuration currentConfig = Main.CONFIG.getCurrentConfig();
-        if(this.getInvestissement().size()<currentConfig.getLimiteAntiTrust() | investissement.getValeur() < this.getLiquide()){
+        if(this.getInvestissement().size()<currentConfig.getLimiteAntiTrust() || investissement.getValeur() < this.getLiquide()){
             this.acheter(investissement);
         }
         else if(this.getInvestissement().size()==currentConfig.getLimiteAntiTrust()){
