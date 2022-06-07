@@ -1,5 +1,6 @@
 package acteurs;
 
+import exceptions.NePeutPasPayerException;
 import exceptions.PasAssezDeLiquideException;
 import plateau.*;
 import configuration.*;
@@ -13,9 +14,9 @@ public class JoueurPrudent extends Joueur{
         super(liquide, nom, currentCase);
     }
 
-    public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException {
+    public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException {
         Configuration currentConfig = CONFIG.getCurrentConfig();
-        if(this.getInvestissements().size()<currentConfig.getLimiteAntiTrust() || investissement.getValeur() < this.getLiquide()){
+        if(this.getInvestissements().size() < currentConfig.getLimiteAntiTrust() || investissement.getValeur() < this.getLiquide()){
             this.acheter(investissement);
         }
         else if(this.getInvestissements().size()==currentConfig.getLimiteAntiTrust()){

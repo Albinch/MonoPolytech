@@ -2,6 +2,7 @@ package plateau.cases;
 
 import acteurs.Joueur;
 import configuration.Configuration;
+import exceptions.NePeutPasPayerException;
 import exceptions.PasAssezDeLiquideException;
 import investissement.Investissement;
 import main.Main;
@@ -23,6 +24,8 @@ public class CaseInvestissement extends Case {
             j.actionInvestissement(this.investissement);
         }catch(PasAssezDeLiquideException e){
             System.out.println("A voulu acheter, mais n'a pas assez de liquide. " + this.investissement.getNom() + " vaut " + this.investissement.getValeur() + "€, et " + j.getNom() + " n'a que " + j.getLiquide() + "€");
+        } catch (NePeutPasPayerException e) {
+            j.eliminer();
         }
     }
     

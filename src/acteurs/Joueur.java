@@ -26,7 +26,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         this.currentCase = c;
     }
 
-    public abstract void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException;
+    public abstract void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException;
 
     public abstract void actionAntitrust();
 
