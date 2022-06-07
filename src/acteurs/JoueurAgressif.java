@@ -14,7 +14,7 @@ public class JoueurAgressif extends Joueur{
 
     public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException {
         if(this.getLiquide() < investissement.getValeur())
-            throw new PasAssezDeLiquideException();
+            throw new PasAssezDeLiquideException(investissement.getValeur() - this.getLiquide());
         else
             this.acheter(investissement);
             System.out.println(super.getNom() + " a acheté le bien " + investissement.getNom() + ", d'une valeur de " + investissement.getValeur() + ".\nLiquide après achat : " + super.getLiquide());

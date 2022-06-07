@@ -27,7 +27,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
 
     public void acheter(Investissement investissement) throws PasAssezDeLiquideException{
         if(this.getLiquide() < investissement.getValeur())
-            throw new PasAssezDeLiquideException();
+            throw new PasAssezDeLiquideException(investissement.getValeur() - this.getLiquide());
         this.getInvestissements().add(investissement);
         this.setLiquide(this.getLiquide() - investissement.getValeur());
         ETAT.getInvestissements().remove(investissement);
@@ -39,14 +39,16 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         ETAT.getInvestissements().add(investissement);
     }
 
-    public void payerBFP(boolean foncier, float taxe) throws PasAssezDeLiquideException{
+    public void payerBFP(boolean foncier, float taxe) throws PasAssezDeLiquideException, NePeutPasPayerException{
         float valeur;
         taxe = taxe/100;
 
         valeur = foncier ? this.getValeurPatrimoine() : (this.getValeurPatrimoine() + this.getLiquide());
 
-        if(this.getLiquide() < valeur*taxe){
-            throw new PasAssezDeLiquideException();
+        if(this.getLiquide() < valeur*taxe) {
+            throw new PasAssezDeLiquideException((valeur*taxe) - this.getLiquide());
+        }else if(this.getLiquide() + this.getValeurPatrimoine() < valeur * taxe){
+            throw new NePeutPasPayerException();
         }else{
             System.out.println(super.getNom() + " a payé " + (valeur*taxe) + "€ à la BFP. (Pris sur " + (foncier ? "patrimoine" : "liquide + patrimoine") + ")");
             this.setLiquide(this.getLiquide() - valeur * taxe);
@@ -69,10 +71,11 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     public void payer(Acteur acteur, Investissement investissement) throws PasAssezDeLiquideException{
         float utilite = investissement.getValeur() * investissement.getRentabilite();
         if(this.getLiquide() < utilite) {
-            throw new PasAssezDeLiquideException();
+            throw new PasAssezDeLiquideException(utilite - this.getLiquide());
+        }else{
+            this.setLiquide(this.getLiquide() - utilite);
+            acteur.setLiquide(acteur.getLiquide() + utilite);
         }
-        this.setLiquide(this.getLiquide() - utilite);
-        acteur.setLiquide(acteur.getLiquide() + utilite);
     }
 
     public String toString(){

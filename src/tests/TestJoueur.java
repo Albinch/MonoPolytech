@@ -1,5 +1,6 @@
 package tests;
 
+import acteurs.Acteur;
 import acteurs.Joueur;
 import acteurs.JoueurAgressif;
 import exceptions.PasAssezDeLiquideException;
@@ -91,5 +92,23 @@ public class TestJoueur {
     public void testRecevoirSubvention(){
         joueur.recevoirSubvention(1000);
         Assert.assertEquals(6000, joueur.getLiquide(), 0);
+    }
+
+    @Test
+    public void testPayer() throws PasAssezDeLiquideException{
+        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F);
+        Joueur j2 = new JoueurAgressif(5000, "Wesley", new Repos(0));
+
+        joueur.payer(j2, i);
+        Assert.assertEquals(4500, joueur.getLiquide(), 0);
+        Assert.assertEquals(5500, j2.getLiquide(), 0);
+    }
+
+    @Test(expected = PasAssezDeLiquideException.class)
+    public void testPayer2() throws PasAssezDeLiquideException{
+        Investissement i = new Investissement("Tour Eiffel", 6000, 1);
+        Joueur j2 = new JoueurAgressif(5000, "Wesley", new Repos(0));
+
+        joueur.payer(j2, i);
     }
 }
