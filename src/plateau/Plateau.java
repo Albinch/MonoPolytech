@@ -13,7 +13,7 @@ public class Plateau {
 
     private InvestissementsManager im;
 
-    public static Etat ETAT;
+    public static Etat ETAT = new Etat(100000, "Etat");
     public static ArrayList<Case> CASES;
     public static int NBCASES = 40;
     private int nbCasesAntitrust = 0;

@@ -67,7 +67,6 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     public void payer(Acteur acteur, Investissement investissement) throws PasAssezDeLiquideException{
         float utilite = investissement.getValeur() * investissement.getRentabilite();
         if(this.getLiquide() < utilite) {
-            System.out.println("AHAH");
             throw new PasAssezDeLiquideException();
         }
         this.setLiquide(this.getLiquide() - utilite);
