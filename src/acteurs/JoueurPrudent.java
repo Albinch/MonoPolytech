@@ -22,14 +22,14 @@ public class JoueurPrudent extends Joueur{
             System.out.println("Le nombre maximum d'investissement est atteint pour ce joueur");
         }
         else if(investissement.getValeur() > this.getLiquide()){
-            System.out.println("Ce investissement est trop chere");
+            System.out.println("Cet investissement est trop cher");
         }
     }
 
     public void actionAntitrust(){
         int nbInvestissements = this.getInvestissements().size();
         if(nbInvestissements < CONFIG.getCurrentConfig().getLimiteAntiTrust()){
-            System.out.println("Ce joueur ne possède pas plus de biens que la limite. Il ne doit rien vendre.\n");
+            System.out.println("Ce joueur ne possède pas plus de biens que la limite (" + super.getInvestissements().size() + " <= " + CONFIG.getCurrentConfig().getLimiteAntiTrust() + "). Il ne doit rien vendre.\n");
         }
         else{
             this.vendre(this.getInvestissements().get(this.getInvestissements().size()-1));

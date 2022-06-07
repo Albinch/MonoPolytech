@@ -43,12 +43,12 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         float valeur;
         taxe = taxe/100;
 
-        valeur = (foncier ? this.getValeurPatrimoine() : (this.getValeurPatrimoine() + this.getLiquide()));
+        valeur = foncier ? this.getValeurPatrimoine() : (this.getValeurPatrimoine() + this.getLiquide());
 
         if(this.getLiquide() < valeur*taxe){
             throw new PasAssezDeLiquideException();
         }else{
-            System.out.println(super.getNom() + " a payé " + (valeur*taxe) + "€ à la BFP.");
+            System.out.println(super.getNom() + " a payé " + (valeur*taxe) + "€ à la BFP. (Pris sur " + (foncier ? "patrimoine" : "liquide + patrimoine") + ")");
             this.setLiquide(this.getLiquide() - valeur * taxe);
         }
     }
@@ -60,7 +60,9 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
 
     public int jouer(){
         int valeurDe = new Random().nextInt(1, 6);
-        this.setCurrentCase((CASES.get(this.currentCase.getIndex() + valeurDe % NBCASES)));
+        int supposed = (this.currentCase.getIndex() + valeurDe) % NBCASES;
+        System.out.println("Supposed: " + supposed);
+        this.setCurrentCase((CASES.get(supposed)));
         return valeurDe;
     }
 
