@@ -83,7 +83,7 @@ public class Main {
                 Joueur joueur = players.get(i);
                 System.out.println("À '" + joueur.toString() + "' de jouer!");
                 joueur.jouer();
-                joueur.
+                joueur.getCurrentCase().actionCase(joueur);
             }
 
             round++;

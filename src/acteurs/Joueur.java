@@ -76,4 +76,9 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     public String toString(){
         return this.toString() + ". Ce joueur est tombé sur la case : " + this.currentCase + "\n";
     }
+
+    public Case getCurrentCase(){
+        return this.currentCase;
+    }
+
 }

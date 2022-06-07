@@ -2,6 +2,7 @@ package plateau.cases;
 
 import acteurs.Joueur;
 import configuration.Configuration;
+import exceptions.PasAssezDeLiquideException;
 import investissement.Investissement;
 import main.Main;
 import plateau.Case;
@@ -18,7 +19,11 @@ public class CaseInvestissement extends Case {
     @Override
     public void actionCase(Joueur j){
         Configuration currentConfig = Main.CONFIG.getCurrentConfig();
-        j.actionInvestissement();
+        try{
+            j.actionInvestissement(this.investissement);
+        }catch(PasAssezDeLiquideException e){
+            System.out.println(e);
+        }
     }
     
     public String toString() {
