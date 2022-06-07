@@ -1,7 +1,9 @@
 package plateau.cases;
 
 import acteurs.Joueur;
+import configuration.Configuration;
 import investissement.Investissement;
+import main.Main;
 import plateau.Case;
 
 public class CaseInvestissement extends Case {
