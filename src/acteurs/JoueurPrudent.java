@@ -1,5 +1,6 @@
 package acteurs;
 
+import exceptions.AntitrustException;
 import exceptions.NePeutPasPayerException;
 import exceptions.PasAssezDeLiquideException;
 import plateau.*;
@@ -8,23 +9,30 @@ import investissement.ComparateurInvestissement;
 import investissement.Investissement;
 
 import static main.Main.CONFIG;
+import static plateau.Plateau.ETAT;
 
 public class JoueurPrudent extends Joueur{
     public JoueurPrudent(float liquide, String nom, Case currentCase){
         super(liquide, nom, currentCase);
     }
 
-    public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException {
+    public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException, AntitrustException {
         Configuration currentConfig = CONFIG.getCurrentConfig();
-        if(this.getInvestissements().size() < currentConfig.getLimiteAntiTrust() || investissement.getValeur() < this.getLiquide()){
-            this.acheter(investissement);
+        float seuil = (this.getLiquide() + this.getValeurPatrimoine()) * 0.2F;
+
+        if(this.getInvestissements().contains(investissement)){
+            return;
         }
-        else if(this.getInvestissements().size()==currentConfig.getLimiteAntiTrust()){
-            System.out.println("Le nombre maximum d'investissement est atteint pour ce joueur");
-        }
-        else if(investissement.getValeur() > this.getLiquide()){
-            System.out.println("Cet investissement est trop cher");
-        }
+
+        if(investissement.getProprietaire().equals(ETAT)){
+            if(this.getInvestissements().size() < currentConfig.getLimiteAntiTrust() && investissement.getValeur() <= seuil)
+                this.acheter(investissement);
+            else if(this.getInvestissements().size() == currentConfig.getLimiteAntiTrust())
+                throw new AntitrustException();
+            else if(investissement.getValeur() > this.getLiquide())
+                throw new PasAssezDeLiquideException(0);
+        }else
+            this.payer(investissement.getProprietaire(), investissement);
     }
 
     public void actionAntitrust(){
