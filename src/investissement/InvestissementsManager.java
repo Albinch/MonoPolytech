@@ -1,5 +1,8 @@
 package investissement;
 
+import acteurs.Etat;
+import plateau.Plateau;
+
 import java.util.ArrayList;
 
 public class InvestissementsManager {
@@ -12,18 +15,20 @@ public class InvestissementsManager {
 
     public void createInvestissements(){
 
-        unusedInvestissements.add(new Investissement("Rue de la paix", 500000, 10));
-        unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8));
-        unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9));
-        unusedInvestissements.add(new Investissement("Rue de la paix", 500000, 10));
-        unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8));
-        unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9));
-        unusedInvestissements.add(new Investissement("Rue de la paix", 500000, 10));
-        unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8));
-        unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9));
-        unusedInvestissements.add(new Investissement("Rue de la paix", 500000, 10));
-        unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8));
-        unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9));
+        Etat etat = Plateau.ETAT;
+
+        unusedInvestissements.add(new Investissement("Rue de la paix", 500000, 10, etat));
+        unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8, etat));
+        unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9, etat));
+        unusedInvestissements.add(new Investissement("Rue de la paix", 500000, 10, etat));
+        unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8, etat));
+        unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9, etat));
+        unusedInvestissements.add(new Investissement("Rue de la paix", 500000, 10, etat));
+        unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8, etat));
+        unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9, etat));
+        unusedInvestissements.add(new Investissement("Rue de la paix", 500000, 10, etat));
+        unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8, etat));
+        unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9, etat));
 
     }
 

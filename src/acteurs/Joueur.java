@@ -34,6 +34,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         if(this.getLiquide() < investissement.getValeur())
             throw new PasAssezDeLiquideException(investissement.getValeur() - this.getLiquide());
         this.getInvestissements().add(investissement);
+        investissement.setProprietaire(this);
         this.setLiquide(this.getLiquide() - investissement.getValeur());
         ETAT.getInvestissements().remove(investissement);
     }
@@ -42,6 +43,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         this.getInvestissements().remove(investissement);
         this.setLiquide(this.getLiquide() + investissement.getValeur());
         ETAT.getInvestissements().add(investissement);
+        investissement.setProprietaire(ETAT);
     }
 
     public void payerBFP(boolean foncier, float taxe) throws PasAssezDeLiquideException, NePeutPasPayerException{
