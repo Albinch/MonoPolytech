@@ -27,12 +27,10 @@ public class JoueurPrudent extends Joueur{
     }
 
     public void actionAntitrust(){
-        
-        this.getInvestissements().sort(new ComparateurInvestissement());
+        int nbInvestissements = this.getInvestissements().size();
         if(nbInvestissements < CONFIG.getCurrentConfig().getLimiteAntiTrust()){
             System.out.println("Ce joueur ne possède pas plus de biens que la limite. Il ne doit rien vendre.\n");
         }
-        
         else{
             this.vendre(this.getInvestissements().get(this.getInvestissements().size()-1));
         }
