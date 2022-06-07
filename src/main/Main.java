@@ -75,7 +75,7 @@ public class Main {
 
     public static void gameLoop(){
 
-        while(running){
+        while(running && players.size() > 1){
             System.out.println("==============================");
             System.out.println("     Tour n°" + round + "      ");
             System.out.println(" ");
@@ -92,6 +92,8 @@ public class Main {
 
             round++;
         }
+
+        System.out.println("Le joueur " + players.get(0).getNom() + " a gagné la partie !");
 
     }
 
