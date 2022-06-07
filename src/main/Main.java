@@ -20,7 +20,7 @@ public class Main {
 
     public static boolean running = true;
     public static int round = 1;
-    private static ArrayList<Joueur> players = new ArrayList<Joueur>();
+    public static ArrayList<Joueur> players = new ArrayList<Joueur>();
 
     public static void main(String[] args){
 

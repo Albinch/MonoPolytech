@@ -7,6 +7,7 @@ import exceptions.*;
 import java.util.Random;
 
 import static plateau.Plateau.*;
+import static main.Main.players;
 
 public abstract class Joueur extends Acteur implements StyleJoueur{
 
@@ -15,6 +16,10 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     public Joueur(float liquide, String nom, Case currentCase){
         super(liquide, nom);
         this.currentCase = currentCase;
+    }
+
+    public Case getCurrentCase(){
+        return this.currentCase;
     }
 
     public void setCurrentCase(Case c){
@@ -78,12 +83,13 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         }
     }
 
-    public String toString(){
-        return super.toString() + "Current case : " + getCurrentCase().toString();
+    public void eliminer(){
+        players.remove(this);
+        System.out.println("Le joueur " + this.getNom() + " est éliminé de la partie.");
     }
 
-    public Case getCurrentCase(){
-        return this.currentCase;
+    public String toString(){
+        return super.toString() + "Current case : " + getCurrentCase().toString();
     }
 
 }
