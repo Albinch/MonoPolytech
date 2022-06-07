@@ -52,14 +52,14 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
 
         valeur = foncier ? this.getValeurPatrimoine() : (this.getValeurPatrimoine() + this.getLiquide());
 
-        if(this.getLiquide() < valeur*taxe) {
-            throw new PasAssezDeLiquideException((valeur*taxe) - this.getLiquide());
-        }else if(this.getLiquide() + this.getValeurPatrimoine() < valeur * taxe){
+        if(this.getLiquide() + this.getValeurPatrimoine() < valeur * taxe)
             throw new NePeutPasPayerException();
-        }else{
-            System.out.println(super.getNom() + " a payé " + (valeur*taxe) + "€ à la BFP. (Pris sur " + (foncier ? "patrimoine" : "liquide + patrimoine") + ")");
-            this.setLiquide(this.getLiquide() - valeur * taxe);
-        }
+
+        if(this.getLiquide() < valeur*taxe)
+            throw new PasAssezDeLiquideException((valeur*taxe) - this.getLiquide());
+
+        System.out.println(super.getNom() + " a payé " + (valeur*taxe) + "€ à la BFP. (Pris sur " + (foncier ? "patrimoine" : "liquide + patrimoine") + ")");
+        this.setLiquide(this.getLiquide() - valeur * taxe);
     }
 
     public void recevoirSubvention(float subvention){
