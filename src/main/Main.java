@@ -44,7 +44,7 @@ public class Main {
 
     public static void definePlayers(){
 
-        int startCapital = 5000;
+        int startCapital = 300000;
         String name = "";
         int style = -1;
 
@@ -83,9 +83,11 @@ public class Main {
             for(int i = 0; i < players.size(); i++){
                 Joueur joueur = players.get(i);
                 System.out.println("-> " + joueur.toString());
-                joueur.jouer();
+                int valeurDe = joueur.jouer();
+                System.out.println("Valeur du dé : " + valeurDe);
+                System.out.println("Nouvelle case : " + joueur.getCurrentCase().toString());
                 joueur.getCurrentCase().actionCase(joueur);
-                System.out.println("-----");
+                System.out.println("\n");
             }
 
             round++;

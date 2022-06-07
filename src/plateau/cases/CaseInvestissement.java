@@ -22,7 +22,7 @@ public class CaseInvestissement extends Case {
         try{
             j.actionInvestissement(this.investissement);
         }catch(PasAssezDeLiquideException e){
-            System.out.println(e);
+            System.out.println("A voulu acheter, mais n'a pas assez de liquide. " + this.investissement.getNom() + " vaut " + this.investissement.getValeur() + "€, et " + j.getNom() + " n'a que " + j.getLiquide() + "€");
         }
     }
     

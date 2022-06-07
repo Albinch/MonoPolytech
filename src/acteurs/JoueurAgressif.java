@@ -17,6 +17,7 @@ public class JoueurAgressif extends Joueur{
             throw new PasAssezDeLiquideException();
         else
             this.acheter(investissement);
+            System.out.println(super.getNom() + " a acheté le bien " + investissement.getNom() + ", d'une valeur de " + investissement.getValeur() + ".\nLiquide après achat : " + super.getLiquide());
     }
 
     public void actionAntitrust(){

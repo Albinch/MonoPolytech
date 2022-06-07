@@ -38,4 +38,9 @@ public class Acteur{
     public String toString(){
         return "Joueur : " + this.nom + " (" + this.liquide + "€)\n";
     }
+
+    public String getNom(){
+        return this.nom;
+    }
+
 }

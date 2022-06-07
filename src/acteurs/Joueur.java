@@ -41,34 +41,35 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
 
     public void payerBFP(boolean foncier, float taxe) throws PasAssezDeLiquideException{
         float valeur;
-        if(foncier){
-            valeur = this.getValeurPatrimoine();
-            if(this.getLiquide() < valeur * taxe)
-                throw new PasAssezDeLiquideException();
-            else
-                this.setLiquide(this.getLiquide() - valeur * taxe);
+        taxe = taxe/100;
+
+        valeur = (foncier ? this.getValeurPatrimoine() : (this.getValeurPatrimoine() + this.getLiquide()));
+
+        if(this.getLiquide() < valeur*taxe){
+            throw new PasAssezDeLiquideException();
         }else{
-            valeur = this.getValeurPatrimoine() + this.getLiquide();
-            if(this.getLiquide() < valeur * taxe)
-                throw new PasAssezDeLiquideException();
-            else
-                this.setLiquide(this.getLiquide() - valeur);
+            System.out.println(super.getNom() + " a payé " + (valeur*taxe) + "€ à la BFP.");
+            this.setLiquide(this.getLiquide() - valeur * taxe);
         }
     }
 
     public void recevoirSubvention(float subvention){
+        System.out.println("A reçu une subvention (" + this.getLiquide() + " + " + subvention + " = " + (this.getLiquide()+subvention) + ")");
         this.setLiquide(this.getLiquide() + subvention);
     }
 
-    public void jouer(){
+    public int jouer(){
         int valeurDe = new Random().nextInt(1, 6);
         this.setCurrentCase((CASES.get(this.currentCase.getIndex() + valeurDe % NBCASES)));
+        return valeurDe;
     }
 
     public void payer(Acteur acteur, Investissement investissement) throws PasAssezDeLiquideException{
         float utilite = investissement.getValeur() * investissement.getRentabilite();
-        if(this.getLiquide() < utilite)
+        if(this.getLiquide() < utilite) {
+            System.out.println("AHAH");
             throw new PasAssezDeLiquideException();
+        }
         this.setLiquide(this.getLiquide() - utilite);
         acteur.setLiquide(acteur.getLiquide() + utilite);
     }

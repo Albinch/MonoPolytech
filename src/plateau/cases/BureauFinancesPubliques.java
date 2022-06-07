@@ -21,7 +21,7 @@ public class BureauFinancesPubliques extends Case {
             j.payerBFP(currentConfig.isFoncier(), currentConfig.getPourcentageTaxes());
             System.out.println("Foncier : " + currentConfig.isFoncier() + " -- Taxes: " + currentConfig.getPourcentageTaxes() + "%");
         }catch(PasAssezDeLiquideException e){
-            System.out.println(e);
+            System.out.println(j.getNom() + " n'a pas assez de liquide pour payer.");
         }
     }
 

@@ -32,7 +32,10 @@ public class Plateau {
 
         this.ETAT = new Etat(100000, "Etat");
 
-        for(int i = 0; i < this.NBCASES; i++){
+        this.CASES.add(new Repos(0));
+        this.nbCasesRepos++;
+
+        for(int i = 1; i < this.NBCASES; i++){
             int random = new Random().nextInt(5);
             switch(random){
 
