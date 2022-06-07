@@ -25,7 +25,7 @@ public class TestJoueur {
 
     @Test
     public void testAcheter() throws PasAssezDeLiquideException {
-        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F);
+        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F, ETAT);
         joueur.acheter(i);
         Assert.assertEquals(4000, joueur.getLiquide(), 0);
         Assert.assertEquals(0, ETAT.getInvestissements().size(), 0);
@@ -33,15 +33,15 @@ public class TestJoueur {
 
     @Test(expected = PasAssezDeLiquideException.class)
     public void testAcheter2() throws PasAssezDeLiquideException{
-        Investissement i = new Investissement("Tour Eiffel", 10000, 0.5F);
+        Investissement i = new Investissement("Tour Eiffel", 10000, 0.5F, ETAT);
         joueur.acheter(i);
     }
 
     @Test
     public void testVendre() throws PasAssezDeLiquideException{
-        Investissement i1 = new Investissement("Tour Eiffel", 1000, 0.5F);
-        Investissement i2 = new Investissement("Tour Eiffel", 1000, 0.5F);
-        Investissement i3 = new Investissement("Tour Eiffel", 1000, 0.5F);
+        Investissement i1 = new Investissement("Tour Eiffel", 1000, 0.5F, ETAT);
+        Investissement i2 = new Investissement("Tour Eiffel", 1000, 0.5F, ETAT);
+        Investissement i3 = new Investissement("Tour Eiffel", 1000, 0.5F, ETAT);
 
         joueur.acheter(i1);
         joueur.acheter(i2);
@@ -55,7 +55,7 @@ public class TestJoueur {
 
     @Test
     public void testPayerBFP() throws PasAssezDeLiquideException, NePeutPasPayerException {
-        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F);
+        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F, ETAT);
 
         joueur.acheter(i);
         joueur.payerBFP(true, 50);
@@ -65,7 +65,7 @@ public class TestJoueur {
 
     @Test(expected = PasAssezDeLiquideException.class)
     public void testPayerBFP2() throws PasAssezDeLiquideException, NePeutPasPayerException {
-        Investissement i = new Investissement("Tour Eiffel", 4900, 0.5F);
+        Investissement i = new Investissement("Tour Eiffel", 4900, 0.5F, ETAT);
 
         joueur.acheter(i);
         joueur.payerBFP(true, 50);
@@ -73,7 +73,7 @@ public class TestJoueur {
 
     @Test
     public void testPayerBFP3() throws PasAssezDeLiquideException, NePeutPasPayerException {
-        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F);
+        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F, ETAT);
 
         joueur.acheter(i);
         joueur.payerBFP(false, 50);
@@ -83,7 +83,7 @@ public class TestJoueur {
 
     @Test(expected = PasAssezDeLiquideException.class)
     public void testPayerBFP4() throws PasAssezDeLiquideException, NePeutPasPayerException {
-        Investissement i = new Investissement("Tour Eiffel", 4900, 0.5F);
+        Investissement i = new Investissement("Tour Eiffel", 4900, 0.5F, ETAT);
 
         joueur.acheter(i);
         joueur.payerBFP(false, 50);
@@ -96,8 +96,8 @@ public class TestJoueur {
     }
 
     @Test
-    public void testPayer() throws PasAssezDeLiquideException{
-        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F);
+    public void testPayer() throws PasAssezDeLiquideException, NePeutPasPayerException{
+        Investissement i = new Investissement("Tour Eiffel", 1000, 0.5F, ETAT);
         Joueur j2 = new JoueurAgressif(5000, "Wesley", new Repos(0));
 
         joueur.payer(j2, i);
@@ -106,8 +106,8 @@ public class TestJoueur {
     }
 
     @Test(expected = PasAssezDeLiquideException.class)
-    public void testPayer2() throws PasAssezDeLiquideException{
-        Investissement i = new Investissement("Tour Eiffel", 6000, 1);
+    public void testPayer2() throws PasAssezDeLiquideException, NePeutPasPayerException{
+        Investissement i = new Investissement("Tour Eiffel", 6000, 1, ETAT);
         Joueur j2 = new JoueurAgressif(5000, "Wesley", new Repos(0));
 
         joueur.payer(j2, i);

@@ -7,6 +7,7 @@ import investissement.Investissement;
 import plateau.*;
 
 import static main.Main.CONFIG;
+import static plateau.Plateau.ETAT;
 
 public class JoueurAgressif extends Joueur{
     public JoueurAgressif(float liquide, String nom, Case currentCase){
@@ -14,13 +15,13 @@ public class JoueurAgressif extends Joueur{
     }
 
     public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException {
-        if(this.getLiquide() < investissement.getValeur())
-            throw new PasAssezDeLiquideException(investissement.getValeur() - this.getLiquide());
-        else if(this.getLiquide() + this.getValeurPatrimoine() < investissement.getValeur())
-            throw new NePeutPasPayerException();
-        else
-            this.acheter(investissement);
-            System.out.println(super.getNom() + " a acheté le bien " + investissement.getNom() + ", d'une valeur de " + investissement.getValeur() + ".\nLiquide après achat : " + super.getLiquide());
+        if(!this.getInvestissements().contains(investissement)){
+            if(investissement.getProprietaire().equals(ETAT)){
+                this.acheter(investissement);
+            }else{
+                this.payer(investissement.getProprietaire(), investissement);
+            }
+        }
     }
 
     public void actionAntitrust(){
