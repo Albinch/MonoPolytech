@@ -1,6 +1,8 @@
 package plateau.cases;
 
 import acteurs.*;
+import configuration.Configuration;
+import main.Main;
 import plateau.Case;
 
 public class Antitrust extends Case {
@@ -17,6 +19,6 @@ public class Antitrust extends Case {
     }
     
     public String toString() {
-        return "La case '" + this.getIndex() + " est une case 'Antitrust'";
+        return "Antitrust (index : " + this.getIndex() + ")\n";
     }
 }

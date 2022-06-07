@@ -18,8 +18,8 @@ public class Main {
     public static Plateau PLATEAU;
     public static ConfigurationManager CONFIG;
 
-    public boolean running = true;
-    public int round = 1;
+    public static boolean running = true;
+    public static int round = 1;
     private static ArrayList<Joueur> players = new ArrayList<Joueur>();
 
     public static void main(String[] args){
@@ -29,6 +29,8 @@ public class Main {
         IM.createInvestissements();
         PLATEAU.generatePlateau();
         definePlayers();
+
+        gameLoop();
 
         System.out.println("Un plateau de " + PLATEAU.getNBCASES() + " case(s) a été généré.");
 
@@ -50,11 +52,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         name = sc.nextLine();
 
-        while(name != "Fin"){
+        while(!name.equalsIgnoreCase("Fin")){
             System.out.println("Ensuite, définissez le style de joueur de " + name + ".");
             System.out.println("- Agressif (1)");
             System.out.println("- Prudent (2)");
-            style = sc.nextInt();
+            style = Integer.parseInt(sc.nextLine());
 
             Joueur j;
             if(style == 1){
@@ -65,14 +67,13 @@ public class Main {
 
             players.add(j);
 
-            System.out.println("Définissez le pseudo du nouveau joueur.");
-            System.out.println("Si vous avez défini tous vos joueurs, entrez 'Fin'");
+            System.out.println("Définissez le pseudo du nouveau joueur. \nSi vous avez terminé, entrez 'Fin'.\n");
             name = sc.nextLine();
         }
 
     }
 
-    public void gameLoop(){
+    public static void gameLoop(){
 
         while(running){
             System.out.println("==============================");
@@ -81,9 +82,10 @@ public class Main {
 
             for(int i = 0; i < players.size(); i++){
                 Joueur joueur = players.get(i);
-                System.out.println("À '" + joueur.toString() + "' de jouer!");
+                System.out.println("-> " + joueur.toString());
                 joueur.jouer();
                 joueur.getCurrentCase().actionCase(joueur);
+                System.out.println("-----");
             }
 
             round++;

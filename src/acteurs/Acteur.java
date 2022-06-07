@@ -36,6 +36,6 @@ public class Acteur{
     }
     
     public String toString(){
-        return "Joueur : " + this.nom + " possède " + this.liquide + "\n";
+        return "Joueur : " + this.nom + " (" + this.liquide + "€)\n";
     }
 }

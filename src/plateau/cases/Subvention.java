@@ -18,6 +18,6 @@ public class Subvention extends Case {
     }
     
     public String toString() {
-        return "La case '"+ this.getIndex() + "est une case 'Subvention'";
+        return "Subvention (index : " + this.getIndex() + ")\n";
     }
 }

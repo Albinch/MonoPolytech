@@ -37,6 +37,6 @@ public class JoueurPrudent extends Joueur{
     }
 
     public String toString(){
-        return super.toString() + "Il adoptera le comportement prudent";
+        return super.toString() + "Comportement : prudent";
     }
 }

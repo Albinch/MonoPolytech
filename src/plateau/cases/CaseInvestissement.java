@@ -27,6 +27,6 @@ public class CaseInvestissement extends Case {
     }
     
     public String toString() {
-        return "La case '" + this.getIndex() + " est une case 'Investissement'";
+        return "Investissement (index : " + this.getIndex() + ")\n";
     }
 }

@@ -2,6 +2,7 @@ package plateau.cases;
 
 import acteurs.Joueur;
 import configuration.Configuration;
+import exceptions.PasAssezDeLiquideException;
 import main.Main;
 import plateau.Case;
 
@@ -15,11 +16,16 @@ public class BureauFinancesPubliques extends Case {
     public void actionCase(Joueur j){
 
         Configuration currentConfig = Main.CONFIG.getCurrentConfig();
-        j.payerBFP(currentConfig.isFoncier(), currentConfig.getPourcentageTaxes());
 
+        try{
+            j.payerBFP(currentConfig.isFoncier(), currentConfig.getPourcentageTaxes());
+            System.out.println("Foncier : " + currentConfig.isFoncier() + " -- Taxes: " + currentConfig.getPourcentageTaxes() + "%");
+        }catch(PasAssezDeLiquideException e){
+            System.out.println(e);
+        }
     }
 
     public String toString() {
-        return "La case '"+ this.getIndex() + "est une case 'Bureau finances publiques'";
+        return "BFP (index : " + this.getIndex() + ")\n";
     }
 }

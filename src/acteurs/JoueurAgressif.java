@@ -33,6 +33,6 @@ public class JoueurAgressif extends Joueur{
     }
 
     public String toString(){
-        return this.toString() + "Il adoptera le comportement agressif";
+        return super.toString() + "Comportement : agressif";
     }
 }
