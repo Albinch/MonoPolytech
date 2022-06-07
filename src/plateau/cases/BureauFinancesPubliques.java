@@ -36,7 +36,7 @@ public class BureauFinancesPubliques extends Case {
                     return;
                 }
                 Investissement toSell = j.getInvestissements().get(0);
-                montantRecolte++;
+                montantRecolte += toSell.getValeur();
                 j.vendre(toSell);
                 System.out.println("- " + toSell.getNom() + " pour " + toSell.getValeur() + "€.");
             }

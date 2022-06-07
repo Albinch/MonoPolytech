@@ -2,6 +2,7 @@ package plateau.cases;
 
 import acteurs.Joueur;
 import configuration.Configuration;
+import exceptions.AntitrustException;
 import exceptions.NePeutPasPayerException;
 import exceptions.PasAssezDeLiquideException;
 import investissement.Investissement;
@@ -26,6 +27,8 @@ public class CaseInvestissement extends Case {
             System.out.println("A voulu acheter, mais n'a pas assez de liquide. " + this.investissement.getNom() + " vaut " + this.investissement.getValeur() + "€, et " + j.getNom() + " n'a que " + j.getLiquide() + "€");
         } catch (NePeutPasPayerException e) {
             j.eliminer();
+        } catch(AntitrustException e){
+            System.out.println(j.getNom() + " (prudent) a atteint sa limite d'investissements possédés.");
         }
     }
     

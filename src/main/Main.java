@@ -41,7 +41,7 @@ public class Main {
 
     public static void definePlayers(){
 
-        int startCapital = 300000;
+        int startCapital = 5000;
         String name = "";
         int style = -1;
 

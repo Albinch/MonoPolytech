@@ -37,6 +37,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         investissement.setProprietaire(this);
         this.setLiquide(this.getLiquide() - investissement.getValeur());
         ETAT.getInvestissements().remove(investissement);
+        System.out.println(this.getNom() + " a acheté le bien " + investissement.getNom());
     }
 
     public void vendre(Investissement investissement){
@@ -84,6 +85,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         }else{
             this.setLiquide(this.getLiquide() - utilite);
             acteur.setLiquide(acteur.getLiquide() + utilite);
+            System.out.println(this.getNom() + " a payé " + acteur.getNom() + " " + utilite + "€ pour être tombé sur son investissement " + investissement.getNom());
         }
     }
 

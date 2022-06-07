@@ -26,9 +26,9 @@ public class JoueurAgressif extends Joueur{
 
     public void actionAntitrust(){
         int nbInvestissements = this.getInvestissements().size();
-        if(nbInvestissements < CONFIG.getCurrentConfig().getLimiteAntiTrust())
-            System.out.println("Ce joueur ne possède pas plus de biens que la limite. Il ne doit rien vendre.\n");
-        else{
+        if(nbInvestissements < CONFIG.getCurrentConfig().getLimiteAntiTrust()) {
+            System.out.println("Ce joueur ne possède pas plus de biens que la limite (" + super.getInvestissements().size() + " <= " + CONFIG.getCurrentConfig().getLimiteAntiTrust() + "). Il ne doit rien vendre.\n");
+        }else{
             int investissementsAVendre = nbInvestissements - CONFIG.getCurrentConfig().getLimiteAntiTrust();
             this.getInvestissements().sort(new ComparateurInvestissement());
             for(int i = 0; i < investissementsAVendre; i++){
