@@ -30,6 +30,7 @@ public class InvestissementsManager {
         unusedInvestissements.add(new Investissement("Boulevard de la Villette", 200000, 8, etat));
         unusedInvestissements.add(new Investissement("Faubourg Saint-Honoré", 350000, 9, etat));
 
+        etat.getInvestissements().addAll(unusedInvestissements);
     }
 
     public Investissement getUnusedInvestissement(){
