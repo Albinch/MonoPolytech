@@ -39,8 +39,15 @@ public class ConfigurationManager {
                 this.currentConfig = new Capitaliste(foncier);
                 break;
             case 2:
-                System.out.println("");
-                int pourcentageTaxes = sc.nextInt();
+                System.out.println("Quel pourcentage de taxes souhaitez-vous appliquer ? (0-100)");
+                float pourcentageTaxes = sc.nextFloat();
+                System.out.println("Quelle limite antitrust souhaitez-vous fixer ? (0-50)");
+                int limiteAntitrust = sc.nextInt();
+                System.out.println("Quel sera le montant des subventions ? (0-10000)");
+                float subventions = sc.nextFloat();
+
+                this.currentConfig = new Europe(pourcentageTaxes, limiteAntitrust, subventions, foncier);
+
                 break;
             case 3:
                 this.currentConfig = new NeoLiberal(foncier);
@@ -52,7 +59,6 @@ public class ConfigurationManager {
                 this.currentConfig = new Socialiste(foncier);
                 break;
             default:
-                System.out.println("Cette configuration n'existe pas.");
                 break;
         }
 
