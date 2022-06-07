@@ -31,6 +31,10 @@ public class BureauFinancesPubliques extends Case {
             int montantRecolte = 0;
 
             while(montantRecolte < e.getRAP()){
+                if(j.getInvestissements().size() == 0){
+                    j.eliminer();
+                    return;
+                }
                 Investissement toSell = j.getInvestissements().get(0);
                 montantRecolte++;
                 j.vendre(toSell);

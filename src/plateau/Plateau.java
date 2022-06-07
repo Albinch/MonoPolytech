@@ -63,6 +63,8 @@ public class Plateau {
 
             }
         }
+
+        System.out.println("Un plateau de " + this.getNBCASES() + " case(s) a été généré.");
     }
 
     public String toString(){

@@ -31,9 +31,6 @@ public class Main {
         definePlayers();
 
         gameLoop();
-
-        System.out.println("Un plateau de " + PLATEAU.getNBCASES() + " case(s) a été généré.");
-
     }
 
     public static void createInstances(){
