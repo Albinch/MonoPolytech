@@ -31,8 +31,9 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     public abstract void actionAntitrust();
 
     public void acheter(Investissement investissement) throws PasAssezDeLiquideException{
-        if(this.getLiquide() < investissement.getValeur())
+        if(this.getLiquide() < investissement.getValeur()){
             throw new PasAssezDeLiquideException(investissement.getValeur() - this.getLiquide());
+        }
         this.getInvestissements().add(investissement);
         investissement.setProprietaire(this);
         this.setLiquide(this.getLiquide() - investissement.getValeur());
@@ -77,7 +78,7 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     }
 
     public void payer(Acteur acteur, Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException{
-        float utilite = investissement.getValeur() * investissement.getRentabilite();
+        float utilite = investissement.getValeur() * (investissement.getRentabilite()/100);
         if(this.getLiquide() < utilite) {
             throw new PasAssezDeLiquideException(utilite - this.getLiquide());
         }else if(this.getLiquide() + this.getValeurPatrimoine() < utilite){

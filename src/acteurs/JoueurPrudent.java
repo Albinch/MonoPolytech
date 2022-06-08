@@ -21,10 +21,11 @@ public class JoueurPrudent extends Joueur{
         float seuil = (this.getLiquide() + this.getValeurPatrimoine()) * 0.2F;
 
         if(this.getInvestissements().contains(investissement)){
+            System.out.println(this.getNom() + " est tombé sur un investissement qui était le sien.");
             return;
         }
 
-        if(investissement.getProprietaire().equals(ETAT)){
+        if(investissement.getProprietaire() instanceof Etat){
             if(this.getInvestissements().size() < currentConfig.getLimiteAntiTrust() && investissement.getValeur() <= seuil)
                 this.acheter(investissement);
             else if(this.getInvestissements().size() == currentConfig.getLimiteAntiTrust())
