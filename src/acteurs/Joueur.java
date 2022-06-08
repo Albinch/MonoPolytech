@@ -95,6 +95,25 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
         System.out.println("Le joueur " + this.getNom() + " est éliminé de la partie.");
     }
 
+    public void compenser(float resteAPayer){
+        System.out.println("Il manque " + resteAPayer + "€ à " + this.getNom() + " pour payer la BFP. Il va devoir vendre des biens.");
+
+        int montantRecolte = 0;
+
+        while(montantRecolte < resteAPayer){
+            if(this.getInvestissements().size() == 0){
+                this.eliminer();
+                return;
+            }
+            Investissement toSell = this.getInvestissements().get(0);
+            montantRecolte += toSell.getValeur();
+            this.vendre(toSell);
+            System.out.println("- " + toSell.getNom() + " pour " + toSell.getValeur() + "€.");
+
+            System.out.println(this.getNom() + " a vendu pour " + montantRecolte + "€.");
+        }
+    }
+
     public String toString(){
         return super.toString() + "Current case : " + getCurrentCase().toString();
     }

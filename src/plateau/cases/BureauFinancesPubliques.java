@@ -26,23 +26,7 @@ public class BureauFinancesPubliques extends Case {
             j.payerBFP(currentConfig.isFoncier(), currentConfig.getPourcentageTaxes());
             System.out.println("Foncier : " + currentConfig.isFoncier() + " -- Taxes: " + currentConfig.getPourcentageTaxes() + "%");
         }catch(PasAssezDeLiquideException e){
-            System.out.println("Il manque " + e.getRAP() + "€ à " + j.getNom() + " pour payer la BFP. Il va devoir vendre des biens.");
-
-            int montantRecolte = 0;
-
-            while(montantRecolte < e.getRAP()){
-                if(j.getInvestissements().size() == 0){
-                    j.eliminer();
-                    return;
-                }
-                Investissement toSell = j.getInvestissements().get(0);
-                montantRecolte += toSell.getValeur();
-                j.vendre(toSell);
-                System.out.println("- " + toSell.getNom() + " pour " + toSell.getValeur() + "€.");
-            }
-
-            System.out.println(j.getNom() + " a vendu pour " + montantRecolte + "€.");
-
+            j.compenser(e.getRAP());
         }catch(NePeutPasPayerException e){
             j.eliminer();
         }
