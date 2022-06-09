@@ -17,7 +17,6 @@ public class Main {
     public static InvestissementsManager IM;
     public static Plateau PLATEAU;
     public static ConfigurationManager CONFIG;
-
     public static boolean running = true;
     public static int round = 1;
     public static ArrayList<Joueur> players = new ArrayList<Joueur>();
@@ -28,7 +27,8 @@ public class Main {
         CONFIG.defineConfiguration();
         IM.createInvestissements();
         PLATEAU.generatePlateau();
-        definePlayers();
+        CONFIG.getCurrentConfig().setJoueurs();
+        //definePlayers();
 
         gameLoop();
     }
@@ -41,7 +41,7 @@ public class Main {
 
     public static void definePlayers(){
 
-        int startCapital = 5000;
+        int startCapital = 50000;
         String name = "";
         int style = -1;
 
@@ -88,6 +88,7 @@ public class Main {
             }
 
             round++;
+
         }
 
         System.out.println("Le joueur " + players.get(0).getNom() + " a gagné la partie !");

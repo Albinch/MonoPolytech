@@ -79,10 +79,10 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
 
     public void payer(Acteur acteur, Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException{
         float utilite = investissement.getValeur() * (investissement.getRentabilite()/100);
-        if(this.getLiquide() < utilite) {
-            throw new PasAssezDeLiquideException(utilite - this.getLiquide());
-        }else if(this.getLiquide() + this.getValeurPatrimoine() < utilite){
+        if(this.getLiquide() + this.getValeurPatrimoine() < utilite) {
             throw new NePeutPasPayerException();
+        }else if(this.getLiquide() < utilite){
+            throw new PasAssezDeLiquideException(utilite - this.getLiquide());
         }else{
             this.setLiquide(this.getLiquide() - utilite);
             acteur.setLiquide(acteur.getLiquide() + utilite);
@@ -91,8 +91,15 @@ public abstract class Joueur extends Acteur implements StyleJoueur{
     }
 
     public void eliminer(){
+        this.resetInvestissements();
         players.remove(this);
         System.out.println("Le joueur " + this.getNom() + " est éliminé de la partie.");
+    }
+
+    public void resetInvestissements(){
+        for(Investissement investissement : this.getInvestissements()){
+            investissement.setProprietaire(ETAT);
+        }
     }
 
     public void compenser(float resteAPayer){
