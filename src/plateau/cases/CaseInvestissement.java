@@ -2,6 +2,9 @@ package plateau.cases;
 
 import acteurs.Joueur;
 import configuration.Configuration;
+import exceptions.AntitrustException;
+import exceptions.NePeutPasPayerException;
+import exceptions.PasAssezDeLiquideException;
 import investissement.Investissement;
 import main.Main;
 import plateau.Case;
@@ -18,10 +21,18 @@ public class CaseInvestissement extends Case {
     @Override
     public void actionCase(Joueur j){
         Configuration currentConfig = Main.CONFIG.getCurrentConfig();
-        j.actionInvestissement();
+        try{
+            j.actionInvestissement(this.investissement);
+        }catch(PasAssezDeLiquideException e){
+            System.out.println("A voulu acheter, mais n'a pas assez de liquide. " + this.investissement.getNom() + " vaut " + this.investissement.getValeur() + "€, et " + j.getNom() + " n'a que " + j.getLiquide() + "€");
+        } catch (NePeutPasPayerException e) {
+            j.eliminer();
+        } catch(AntitrustException e){
+            System.out.println(j.getNom() + " (prudent) a atteint sa limite d'investissements possédés.");
+        }
     }
     
     public String toString() {
-        return "La case '" + this.getIndex() + " est une case 'Investissement'";
+        return "Investissement (index : " + this.getIndex() + ")\n";
     }
 }

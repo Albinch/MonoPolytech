@@ -6,10 +6,12 @@ public class Progressiste extends Configuration {
 
     public Progressiste(boolean foncier){
         setPourcentageTaxes(22);
-        setLimiteAntiTrust(3);
-        setSubventions(1000);
+        setLimiteAntiTrust(4);
+        setSubventions(2500);
         setFoncier(foncier);
     }
+
+    public void setJoueurs(){}
 
     @Override
     public String toString() {

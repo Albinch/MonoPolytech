@@ -11,6 +11,8 @@ public class NeoLiberal extends Configuration {
         setFoncier(foncier);
     }
 
+    public void setJoueurs(){}
+
     @Override
     public String toString() {
         return "La configuration actuelle est 'Néo Libérale'";

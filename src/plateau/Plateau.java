@@ -13,7 +13,7 @@ public class Plateau {
 
     private InvestissementsManager im;
 
-    public static Etat ETAT;
+    public static Etat ETAT = new Etat(100000, "Etat");
     public static ArrayList<Case> CASES;
     public static int NBCASES = 40;
     private int nbCasesAntitrust = 0;
@@ -31,8 +31,46 @@ public class Plateau {
     public void generatePlateau(){
 
         this.ETAT = new Etat(100000, "Etat");
+        int casesRemplies = 0;
+        int casesRestantes = this.NBCASES;
 
-        for(int i = 0; i < this.NBCASES; i++){
+        this.CASES.add(new Repos(0));
+        this.nbCasesRepos++;
+        casesRemplies++;
+        casesRestantes--;
+
+        this.nbCasesInvestissement = (int)(casesRestantes * 0.75);
+        for(int i = 1; i < this.nbCasesInvestissement; i++) {
+            this.CASES.add(new CaseInvestissement(i, im.getUnusedInvestissement()));
+        }
+        casesRemplies += this.nbCasesInvestissement;
+
+        for(int j = casesRemplies - 1; j < this.NBCASES; j++) {
+            int random = new Random().nextInt(4);
+            switch (random) {
+
+                case 0:
+                    this.CASES.add(new Antitrust(j));
+                    this.nbCasesAntitrust++;
+                    break;
+                case 1:
+                    this.CASES.add(new BureauFinancesPubliques(j));
+                    this.nbCasesBFP++;
+                    break;
+                case 2:
+                    this.CASES.add(new Repos(j));
+                    this.nbCasesRepos++;
+                    break;
+                case 3:
+                    int amount = 1000 - new Random().nextInt(500);
+                    this.CASES.add(new Subvention(j, amount));
+                    this.nbCasesSubvention++;
+                    break;
+            }
+        }
+
+        /*
+        for(int i = 1; i < this.NBCASES; i++){
             int random = new Random().nextInt(5);
             switch(random){
 
@@ -59,7 +97,10 @@ public class Plateau {
                     break;
 
             }
-        }
+        }*/
+
+        System.out.println(this.nbCasesInvestissement + " cases investissement ont été créé.");
+        System.out.println("Un plateau de " + this.getNBCASES() + " case(s) a été généré.");
     }
 
     public String toString(){

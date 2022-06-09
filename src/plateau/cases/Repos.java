@@ -15,6 +15,6 @@ public class Repos extends Case {
     }
     
     public String toString() {
-        return "La case '" + this.getIndex() + " est une case 'Repos'";
+        return "Repos (index : " + this.getIndex() + ")\n";
     }
 }

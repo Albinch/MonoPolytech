@@ -5,11 +5,13 @@ import configuration.Configuration;
 public class Socialiste extends Configuration {
 
     public Socialiste(boolean foncier){
-        setPourcentageTaxes(17);
-        setLimiteAntiTrust(3);
+        setPourcentageTaxes(45);
+        setLimiteAntiTrust(6);
         setSubventions(900);
         setFoncier(foncier);
     }
+
+    public void setJoueurs(){}
 
     @Override
     public String toString() {

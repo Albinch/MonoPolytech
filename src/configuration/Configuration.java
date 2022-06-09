@@ -39,6 +39,8 @@ public abstract class Configuration {
         this.subventions = subventions;
     }
 
+    public abstract void setJoueurs();
+
     public abstract String toString();
 
 }

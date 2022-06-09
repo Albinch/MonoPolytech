@@ -1,21 +1,33 @@
 package investissement;
 
+import acteurs.Acteur;
+
 public class Investissement{
 
     private String nom;
     private float valeur;
     private boolean disponible;
     private float rentabilite;
+    private Acteur proprietaire;
     
-    public Investissement(String nom, float valeur, float rentabilite){
+    public Investissement(String nom, float valeur, float rentabilite, Acteur proprietaire){
         this.nom = nom;
         this.valeur = valeur;
         this.disponible = true;
-        this.rentabilite = rentabilite;  
+        this.rentabilite = rentabilite;
+        this.proprietaire = proprietaire;
     }
 
     public String getNom() {
         return this.nom;
+    }
+
+    public void setProprietaire(Acteur proprietaire){
+        this.proprietaire = proprietaire;
+    }
+
+    public Acteur getProprietaire(){
+        return this.proprietaire;
     }
 
     public float getValeur(){
