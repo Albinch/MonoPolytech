@@ -17,8 +17,9 @@ public class Capitaliste extends Configuration {
         setFoncier(foncier);
     }
 
+    @Override
     public void setJoueurs(){
-        int capital = 50000;
+        int startCapital = this.getStartCapital();
         String name = "";
 
         System.out.println("Définissez le pseudo du nouveau joueur.");
@@ -26,11 +27,15 @@ public class Capitaliste extends Configuration {
         name = sc.nextLine();
 
         while(!name.equalsIgnoreCase("Fin")){
-            players.add(new JoueurAgressif(capital, name, PLATEAU.CASES.get(0)));
+            players.add(new JoueurAgressif(startCapital, name, PLATEAU.CASES.get(0)));
 
             System.out.println("Définissez le pseudo du nouveau joueur. \nSi vous avez terminé, entrez 'Fin'.\n");
             name = sc.nextLine();
         }
+    }
+
+    public void setProfitPercentage(){
+        super.setProfitPercentage(1.7F);
     }
 
     @Override

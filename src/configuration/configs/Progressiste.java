@@ -11,7 +11,13 @@ public class Progressiste extends Configuration {
         setFoncier(foncier);
     }
 
-    public void setJoueurs(){}
+    public void setJoueurs(){
+        super.setJoueurs();
+    }
+
+    public void setProfitPercentage(){
+        super.setProfitPercentage(1.2F);
+    }
 
     @Override
     public String toString() {

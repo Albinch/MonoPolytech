@@ -25,7 +25,7 @@ public class Main {
 
         createInstances();
         CONFIG.defineConfiguration();
-        IM.createInvestissements();
+        IM.createInvestissements(CONFIG.getCurrentConfig().getProfitPercentage());
         PLATEAU.generatePlateau();
         CONFIG.getCurrentConfig().setJoueurs();
         //definePlayers();
