@@ -1,6 +1,7 @@
 package acteurs;
 
 import exceptions.AntitrustException;
+import exceptions.JeuException;
 import exceptions.NePeutPasPayerException;
 import exceptions.PasAssezDeLiquideException;
 import plateau.*;
@@ -16,7 +17,7 @@ public class JoueurPrudent extends Joueur{
         super(liquide, nom, currentCase);
     }
 
-    public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException, AntitrustException {
+    public void actionInvestissement(Investissement investissement) throws JeuException {
         Configuration currentConfig = CONFIG.getCurrentConfig();
         float seuil = (this.getLiquide() + this.getValeurPatrimoine()) * 0.2F;
 

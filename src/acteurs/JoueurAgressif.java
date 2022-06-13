@@ -1,5 +1,6 @@
 package acteurs;
 
+import exceptions.JeuException;
 import exceptions.NePeutPasPayerException;
 import exceptions.PasAssezDeLiquideException;
 import investissement.ComparateurInvestissement;
@@ -13,7 +14,7 @@ public class JoueurAgressif extends Joueur{
         super(liquide, nom, currentCase);
     }
 
-    public void actionInvestissement(Investissement investissement) throws PasAssezDeLiquideException, NePeutPasPayerException {
+    public void actionInvestissement(Investissement investissement) throws JeuException {
         if(!this.getInvestissements().contains(investissement)){
             if(investissement.getProprietaire() instanceof Etat){
                 this.acheter(investissement);

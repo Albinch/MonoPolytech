@@ -69,37 +69,6 @@ public class Plateau {
             }
         }
 
-        /*
-        for(int i = 1; i < this.NBCASES; i++){
-            int random = new Random().nextInt(5);
-            switch(random){
-
-                case 0:
-                    this.CASES.add(new Antitrust(i));
-                    this.nbCasesAntitrust++;
-                    break;
-                case 1:
-                    this.CASES.add(new BureauFinancesPubliques(i));
-                    this.nbCasesBFP++;
-                    break;
-                case 2:
-                    this.CASES.add(new CaseInvestissement(i, im.getUnusedInvestissement()));
-                    this.nbCasesInvestissement++;
-                    break;
-                case 3:
-                    this.CASES.add(new Repos(i));
-                    this.nbCasesRepos++;
-                    break;
-                case 4:
-                    int amount = 1000 - new Random().nextInt(500);
-                    this.CASES.add(new Subvention(i, amount));
-                    this.nbCasesSubvention++;
-                    break;
-
-            }
-        }*/
-
-        System.out.println(this.nbCasesInvestissement + " cases investissement ont été créé.");
         System.out.println("Un plateau de " + this.getNBCASES() + " case(s) a été généré.");
     }
 

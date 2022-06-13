@@ -1,4 +1,4 @@
 package exceptions;
 
-public class NePeutPasPayerException extends Exception{
+public class NePeutPasPayerException extends JeuException{
 }

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class PasAssezDeLiquideException extends Exception{
+public class PasAssezDeLiquideException extends JeuException{
     private float resteAPayer;
 
     public PasAssezDeLiquideException(float resteAPayer){

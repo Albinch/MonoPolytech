@@ -1,4 +1,4 @@
 package exceptions;
 
-public class AntitrustException extends Exception{
+public class AntitrustException extends JeuException{
 }
